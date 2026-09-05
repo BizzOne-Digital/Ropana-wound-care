@@ -1,0 +1,255 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   ROPANA WOUND CARE - DESIGN TOKENS
+
+   THE ONLY PLACE COLOURS ARE DEFINED.
+
+   The brand palette below is a placeholder derived from the brief's
+   "calm, clinical, premium" direction. When the client's logo is supplied,
+   sample its dominant colours and replace ONLY the --brand-* values in the
+   two blocks below. Nothing else in the codebase hardcodes a colour, so the
+   whole site (and the admin dashboard) re-skins from this file alone.
+
+   Shape lock:  controls 10px  ·  cards 14px  ·  badges pill
+   Accent lock: exactly one accent (--brand), used identically site-wide.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Brand - replace these from the logo */
+  --brand: #14615c;
+  --brand-hover: #0f4b47;
+  --brand-active: #0b3a37;
+  --brand-soft: #e6f1f0;
+  --brand-soft-strong: #cfe4e2;
+  --brand-fg: #ffffff;
+
+  /* Neutrals */
+  --surface: #ffffff;
+  --surface-2: #f6f8f8;
+  --surface-3: #eef2f2;
+  --ink-strong: #12201f;
+  --ink-body: #4b5b5a;
+  --ink-muted: #6e807f;
+  --line: #e0e7e6;
+  --line-strong: #c7d3d2;
+
+  /* Inverted colour block (used once per page, for the closing CTA) */
+  --band-bg: #10302e;
+  --band-text: #f0f6f5;
+  --band-muted: #a9c4c1;
+  --band-line: rgb(255 255 255 / 0.14);
+
+  /* Feedback */
+  --danger: #a4302c;
+  --danger-soft: #fceceb;
+  --success: #1c6b4a;
+  --success-soft: #e7f4ee;
+  --warning: #8a5a17;
+  --warning-soft: #fbf1e2;
+
+  --focus: var(--brand);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --brand: #4fb5ab;
+    --brand-hover: #67c6bc;
+    --brand-active: #7ed3ca;
+    --brand-soft: #122b2a;
+    --brand-soft-strong: #173937;
+    --brand-fg: #062220;
+
+    --surface: #0e1615;
+    --surface-2: #131e1d;
+    --surface-3: #182423;
+    --ink-strong: #eaf1f0;
+    --ink-body: #b2c2c0;
+    --ink-muted: #8a9c9a;
+    --line: #24312f;
+    --line-strong: #354644;
+
+    --band-bg: #081d1c;
+    --band-text: #eef5f4;
+    --band-muted: #9db6b3;
+    --band-line: rgb(255 255 255 / 0.12);
+
+    --danger: #f08b86;
+    --danger-soft: #2a1614;
+    --success: #6cc79b;
+    --success-soft: #10241b;
+    --warning: #d8a95e;
+    --warning-soft: #241c0f;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --brand: #4fb5ab;
+  --brand-hover: #67c6bc;
+  --brand-active: #7ed3ca;
+  --brand-soft: #122b2a;
+  --brand-soft-strong: #173937;
+  --brand-fg: #062220;
+  --surface: #0e1615;
+  --surface-2: #131e1d;
+  --surface-3: #182423;
+  --ink-strong: #eaf1f0;
+  --ink-body: #b2c2c0;
+  --ink-muted: #8a9c9a;
+  --line: #24312f;
+  --line-strong: #354644;
+  --band-bg: #081d1c;
+  --band-text: #eef5f4;
+  --band-muted: #9db6b3;
+  --band-line: rgb(255 255 255 / 0.12);
+  --danger: #f08b86;
+  --danger-soft: #2a1614;
+  --success: #6cc79b;
+  --success-soft: #10241b;
+  --warning: #d8a95e;
+  --warning-soft: #241c0f;
+}
+
+@theme inline {
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-active: var(--brand-active);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-soft-strong: var(--brand-soft-strong);
+  --color-brand-fg: var(--brand-fg);
+
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-strong: var(--ink-strong);
+  --color-body: var(--ink-body);
+  --color-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+
+  --color-band: var(--band-bg);
+  --color-band-text: var(--band-text);
+  --color-band-muted: var(--band-muted);
+  --color-band-line: var(--band-line);
+
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+
+  --radius-control: 10px;
+  --radius-card: 14px;
+  --radius-pill: 999px;
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--surface);
+    color: var(--ink-body);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--ink-strong);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Visible, consistent focus for keyboard users across the whole site. */
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--brand-soft-strong);
+    color: var(--ink-strong);
+  }
+
+  /* Anchor targets clear the sticky header. */
+  :target {
+    scroll-margin-top: 6rem;
+  }
+}
+
+@layer utilities {
+  .trust-marquee-track {
+    animation: trust-marquee 28s linear infinite;
+  }
+
+  .container-page {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 1024px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Skip link: off-screen until focused. */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+  }
+  .skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+  }
+}
+
+@keyframes trust-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Every animated element on the site respects this. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .trust-marquee-track {
+    animation: none;
+  }
+}
