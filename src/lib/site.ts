@@ -9,7 +9,10 @@ const raw = {
   email: process.env.NEXT_PUBLIC_BUSINESS_EMAIL ?? "ropanawoundcare@gmail.com",
   phone: process.env.NEXT_PUBLIC_BUSINESS_PHONE ?? "8472199924",
   serviceArea: process.env.NEXT_PUBLIC_SERVICE_AREA ?? "DFW Area",
-  url: process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000",
+  url:
+    process.env.NEXT_PUBLIC_APP_URL?.trim() ||
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||
+    "http://localhost:3000",
 };
 
 function formatPhone(digits: string) {
