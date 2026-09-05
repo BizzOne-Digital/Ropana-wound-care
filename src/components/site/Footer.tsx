@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/site/Logo";
 import { ButtonLink } from "@/components/ui/Button";
-import { MEDICAL_DISCLAIMER, navLinks, site } from "@/lib/site";
+import { navLinks, site } from "@/lib/site";
 import type { ServiceDTO } from "@/lib/content";
 
 export function Footer({
@@ -102,15 +102,6 @@ export function Footer({
               <li className="text-body">Serving the {site.serviceAreaLong}</li>
             </ul>
           </div>
-        </div>
-
-        <div className="mt-12 rounded-card border border-line bg-surface p-5">
-          <h2 className="text-[13px] font-semibold uppercase tracking-[0.12em] text-strong">
-            Medical disclaimer
-          </h2>
-          <p className="mt-2 text-[13px] leading-relaxed text-muted">
-            {MEDICAL_DISCLAIMER}
-          </p>
         </div>
 
         <div className="mt-8 flex flex-col gap-4 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">

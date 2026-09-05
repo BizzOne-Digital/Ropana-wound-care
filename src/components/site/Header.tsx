@@ -57,8 +57,9 @@ export function Header({ logoUrl }: { logoUrl?: string }) {
         <div className="hidden items-center gap-3 lg:flex">
           <a
             href={site.phoneHref}
-            className="text-[15px] font-medium text-strong transition-colors hover:text-brand"
+            className="inline-flex items-center gap-2 text-[15px] font-medium text-strong transition-colors hover:text-brand"
           >
+            <Phone size={18} aria-hidden />
             {site.phoneDisplay}
           </a>
           <ButtonLink href="/booking" size="sm">
