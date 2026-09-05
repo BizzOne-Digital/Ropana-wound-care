@@ -22,6 +22,7 @@ export default async function AboutPage() {
     <>
       <PageHeader
         title="A wound care practice built around the patient"
+        image="/images/feet1.jpg"
         intro={`${site.name} brings advanced wound care to patients across the ${site.serviceAreaLong}, through mobile visits and telehealth consultations.`}
       />
 
