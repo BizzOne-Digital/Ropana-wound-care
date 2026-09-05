@@ -6,7 +6,13 @@
  * Server-side helpers live in `uploads.server.ts`.
  */
 
-export const UPLOAD_FOLDERS = ["products", "gallery", "pages", "misc"] as const;
+export const UPLOAD_FOLDERS = [
+  "products",
+  "gallery",
+  "pages",
+  "results",
+  "misc",
+] as const;
 export type UploadFolder = (typeof UPLOAD_FOLDERS)[number];
 
 export const MAX_UPLOAD_BYTES = 8 * 1024 * 1024; // 8 MB

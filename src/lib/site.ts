@@ -7,7 +7,8 @@
 const raw = {
   name: process.env.NEXT_PUBLIC_BUSINESS_NAME ?? "Ropana Wound Care",
   email: process.env.NEXT_PUBLIC_BUSINESS_EMAIL ?? "ropanawoundcare@gmail.com",
-  phone: process.env.NEXT_PUBLIC_BUSINESS_PHONE ?? "8472199924",
+  phone: process.env.NEXT_PUBLIC_BUSINESS_PHONE ?? "2174042055",
+  fax: process.env.NEXT_PUBLIC_BUSINESS_FAX ?? "9413400789",
   serviceArea: process.env.NEXT_PUBLIC_SERVICE_AREA ?? "DFW Area",
   url:
     process.env.NEXT_PUBLIC_APP_URL?.trim() ||
@@ -18,7 +19,7 @@ const raw = {
 function formatPhone(digits: string) {
   const d = digits.replace(/\D/g, "");
   if (d.length !== 10) return digits;
-  return `(${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}`;
+  return `${d.slice(0, 3)}-${d.slice(3, 6)}-${d.slice(6)}`;
 }
 
 export const site = {
@@ -30,6 +31,9 @@ export const site = {
   phoneDigits: raw.phone.replace(/\D/g, ""),
   phoneDisplay: formatPhone(raw.phone),
   phoneHref: `tel:+1${raw.phone.replace(/\D/g, "")}`,
+  faxDigits: raw.fax.replace(/\D/g, ""),
+  faxDisplay: formatPhone(raw.fax),
+  faxHref: `fax:+1${raw.fax.replace(/\D/g, "")}`,
   emailHref: `mailto:${raw.email}`,
   serviceArea: raw.serviceArea,
   serviceAreaLong: "Dallas-Fort Worth area",

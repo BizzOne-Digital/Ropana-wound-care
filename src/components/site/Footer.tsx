@@ -91,6 +91,10 @@ export function Footer({
                   {site.phoneDisplay}
                 </a>
               </li>
+              <li className="text-body">
+                <span className="text-muted">Fax</span>{" "}
+                <span className="font-medium text-strong">{site.faxDisplay}</span>
+              </li>
               <li>
                 <a
                   href={site.emailHref}

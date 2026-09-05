@@ -26,6 +26,9 @@ const tones = {
   plain: "bg-surface border-line",
 } as const;
 
+/* Icons cycle the three logo colours so the grid reads as one palette. */
+const iconTones = ["text-brand", "text-accent", "text-leaf"] as const;
+
 export function WhyChooseUs() {
   return (
     <Section tone="tinted" labelledBy="why-heading">
@@ -54,7 +57,11 @@ export function WhyChooseUs() {
                   wide && "lg:flex-row lg:items-center lg:gap-6"
                 )}
               >
-                <Icon name={item.icon} size={26} className="text-brand" />
+                <Icon
+                  name={item.icon}
+                  size={26}
+                  className={iconTones[i % iconTones.length]}
+                />
                 <div className={cx("mt-4", wide && "lg:mt-0")}>
                   <h3 className="text-[15px] font-semibold leading-snug">
                     {item.title}

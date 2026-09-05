@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
     localPatterns: [
       { pathname: "/api/uploads/**", search: "" },
       { pathname: "/placeholder-image.svg", search: "" },
+      // Brand artwork derived from the client logo.
+      { pathname: "/Logo/**", search: "" },
     ],
     remotePatterns: [
       // Seeded stand-in photography, until the client's own images arrive.

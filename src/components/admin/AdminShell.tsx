@@ -8,6 +8,7 @@ import {
   CalendarCheck,
   ChatCircleDots,
   Envelope,
+  ImagesSquare,
   Images,
   List,
   Question,
@@ -17,6 +18,7 @@ import {
   X,
 } from "@phosphor-icons/react/dist/ssr";
 import { useToast } from "@/components/admin/Toast";
+import { BrandMark } from "@/components/site/Logo";
 import { cx } from "@/lib/format";
 import { site } from "@/lib/site";
 
@@ -25,6 +27,7 @@ const links = [
   { href: "/admin/bookings", label: "Bookings", Icon: CalendarCheck },
   { href: "/admin/contacts", label: "Contacts", Icon: Envelope },
   { href: "/admin/services", label: "Services", Icon: Stethoscope },
+  { href: "/admin/results", label: "Before & After", Icon: ImagesSquare },
   { href: "/admin/testimonials", label: "Testimonials", Icon: ChatCircleDots },
   { href: "/admin/faqs", label: "FAQs", Icon: Question },
   { href: "/admin/media", label: "Media", Icon: Images },
@@ -112,9 +115,12 @@ export function AdminShell({
     <div className="min-h-[100dvh] bg-surface-2">
       {/* Mobile bar */}
       <div className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-line bg-surface px-4 lg:hidden">
-        <span className="text-[15px] font-semibold text-strong">
-          {site.name}
-        </span>
+        <Link href="/admin" className="flex items-center gap-2">
+          <BrandMark px={32} />
+          <span className="font-serif text-[16px] font-semibold uppercase tracking-[0.09em] text-brand">
+            {site.name}
+          </span>
+        </Link>
         <button
           type="button"
           onClick={() => setNavOpen((v) => !v)}
@@ -136,12 +142,15 @@ export function AdminShell({
           )}
         >
           <div className="hidden px-2 pb-6 pt-6 lg:block">
-            <Link href="/admin" className="flex flex-col leading-none">
-              <span className="text-[15px] font-semibold tracking-tight text-strong">
-                Ropana
-              </span>
-              <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.18em] text-brand">
-                Dashboard
+            <Link href="/admin" className="flex items-center gap-2.5">
+              <BrandMark px={36} />
+              <span className="flex flex-col leading-none">
+                <span className="font-serif text-[17px] font-semibold uppercase tracking-[0.1em] text-brand">
+                  Ropana
+                </span>
+                <span className="mt-1 text-[9px] font-medium uppercase tracking-[0.26em] text-accent">
+                  Dashboard
+                </span>
               </span>
             </Link>
           </div>

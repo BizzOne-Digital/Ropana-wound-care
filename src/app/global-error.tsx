@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { site } from "@/lib/site";
 
 /** Last-resort boundary: replaces the root layout, so it renders its own shell. */
 export default function GlobalError({
@@ -27,16 +28,16 @@ export default function GlobalError({
           fontFamily:
             "ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif",
           background: "#ffffff",
-          color: "#12201f",
+          color: "#122640",
         }}
       >
         <div style={{ maxWidth: "34rem", textAlign: "center" }}>
           <h1 style={{ fontSize: "1.75rem", letterSpacing: "-0.02em" }}>
             Something went wrong
           </h1>
-          <p style={{ marginTop: "0.75rem", lineHeight: 1.6, color: "#4b5b5a" }}>
-            Please try again. If the problem continues, call Ropana Wound Care
-            on (847) 219-9924.
+          <p style={{ marginTop: "0.75rem", lineHeight: 1.6, color: "#425267" }}>
+            Please try again. If the problem continues, call {site.name} on{" "}
+            {site.phoneDisplay}.
           </p>
           <button
             onClick={reset}
@@ -46,7 +47,7 @@ export default function GlobalError({
               padding: "0 1.25rem",
               borderRadius: "10px",
               border: "none",
-              background: "#14615c",
+              background: "#1a3b66",
               color: "#ffffff",
               fontSize: "0.95rem",
               fontWeight: 500,

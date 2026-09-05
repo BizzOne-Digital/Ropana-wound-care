@@ -6,6 +6,7 @@ import { MobileCare } from "@/components/site/MobileCare";
 import { Telehealth } from "@/components/site/Telehealth";
 import { WhyChooseUs } from "@/components/site/WhyChooseUs";
 import { AboutPreview } from "@/components/site/AboutPreview";
+import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { TestimonialsSection } from "@/components/site/TestimonialsSection";
 import { FaqSection } from "@/components/site/FaqSection";
 import { ServiceArea } from "@/components/site/ServiceArea";
@@ -14,6 +15,7 @@ import {
   getPublishedFaqs,
   getPublishedServices,
   getPublishedTestimonials,
+  getPublishedWoundCases,
   getSiteImages,
 } from "@/lib/content";
 
@@ -25,10 +27,11 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const [services, testimonials, faqs, images] = await Promise.all([
+  const [services, testimonials, faqs, woundCases, images] = await Promise.all([
     getPublishedServices(),
     getPublishedTestimonials(3),
     getPublishedFaqs(6),
+    getPublishedWoundCases(3),
     getSiteImages(),
   ]);
 
@@ -41,6 +44,7 @@ export default async function HomePage() {
       <Telehealth />
       <WhyChooseUs />
       <AboutPreview imageUrl={images.aboutImage} />
+      <BeforeAfter cases={woundCases} />
       <TestimonialsSection testimonials={testimonials} />
       <FaqSection faqs={faqs} showAllLink />
       <ServiceArea />

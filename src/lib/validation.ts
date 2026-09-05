@@ -121,6 +121,44 @@ export const testimonialSchema = z.object({
 });
 export const testimonialUpdateSchema = testimonialSchema.partial();
 
+/**
+ * Before / after wound care results.
+ *
+ * Both images are required - a case with only one half of the pair is not a
+ * before and after. `mediaUrl` accepts an empty string for optional imagery,
+ * so these tighten it to a non-empty managed upload.
+ */
+const requiredMediaUrl = (message: string) =>
+  mediaUrl.refine((value) => value !== "", message);
+
+const woundCaseBase = z.object({
+  title: trimmed(2, 120),
+  summary: z.string().trim().max(600).default(""),
+  timeframe: z.string().trim().max(60).default(""),
+  beforeImage: requiredMediaUrl("Upload the before image."),
+  afterImage: requiredMediaUrl("Upload the after image."),
+  consent: z.boolean().default(false),
+  sensitive: z.boolean().default(true),
+  published: z.boolean().default(false),
+  order: z.number().int().min(0).max(999).default(0),
+});
+
+/**
+ * Publishing requires consent on file. On create both values are present so the
+ * rule is checked here; on update the payload may touch only one of the two, so
+ * the route handler re-checks it against the merged document instead.
+ */
+export const woundCaseSchema = woundCaseBase.refine(
+  (data) => !data.published || data.consent,
+  {
+    path: ["consent"],
+    message: "Confirm you hold written patient consent before publishing.",
+  }
+);
+
+/** Kept as a plain object schema so `.partial()` stays available. */
+export const woundCaseUpdateSchema = woundCaseBase.partial();
+
 export const faqSchema = z.object({
   question: trimmed(5, 250),
   answer: trimmed(10, 4000),

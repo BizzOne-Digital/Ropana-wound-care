@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Envelope, MapPin, Phone } from "@phosphor-icons/react/dist/ssr";
+import { Envelope, MapPin, Phone, Printer } from "@phosphor-icons/react/dist/ssr";
 import { PageHeader } from "@/components/site/PageHeader";
 import { ContactForm } from "@/components/site/ContactForm";
 import { Section } from "@/components/ui/Section";
@@ -45,6 +45,23 @@ export default function ContactPage() {
                     >
                       {site.phoneDisplay}
                     </a>
+                  </dd>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <Printer
+                  size={20}
+                  weight="duotone"
+                  aria-hidden
+                  className="mt-0.5 shrink-0 text-accent"
+                />
+                <div>
+                  <dt className="text-[13px] uppercase tracking-[0.1em] text-muted">
+                    Fax
+                  </dt>
+                  <dd className="mt-1 text-[17px] font-semibold text-strong">
+                    {site.faxDisplay}
                   </dd>
                 </div>
               </div>

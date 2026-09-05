@@ -21,6 +21,7 @@ export default async function SiteLayout({
       "Mobile wound care and telehealth consultations across the Dallas-Fort Worth area.",
     url: site.url,
     telephone: `+1${site.phoneDigits}`,
+    faxNumber: `+1${site.faxDigits}`,
     email: site.email,
     areaServed: {
       "@type": "AdministrativeArea",

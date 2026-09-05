@@ -5,6 +5,7 @@ import { Contact } from "@/models/Contact";
 import { Faq } from "@/models/Faq";
 import { Service } from "@/models/Service";
 import { Testimonial } from "@/models/Testimonial";
+import { WoundCase } from "@/models/WoundCase";
 import { Setting } from "@/models/Setting";
 import type { BookingStatus } from "@/models/Booking";
 import type { ContactStatus } from "@/models/Contact";
@@ -52,6 +53,20 @@ export type AdminTestimonial = {
   rating: number | null;
   location: string;
   published: boolean;
+  createdAt: string;
+};
+
+export type AdminWoundCase = {
+  _id: string;
+  title: string;
+  summary: string;
+  timeframe: string;
+  beforeImage: string;
+  afterImage: string;
+  consent: boolean;
+  sensitive: boolean;
+  published: boolean;
+  order: number;
   createdAt: string;
 };
 
@@ -110,6 +125,13 @@ export async function listTestimonials(): Promise<AdminTestimonial[]> {
   return serialize(await Testimonial.find({}).sort({ createdAt: -1 }).lean());
 }
 
+export async function listWoundCases(): Promise<AdminWoundCase[]> {
+  await dbConnect();
+  return serialize(
+    await WoundCase.find({}).sort({ order: 1, createdAt: -1 }).lean()
+  );
+}
+
 export async function listFaqs(): Promise<AdminFaq[]> {
   await dbConnect();
   return serialize(await Faq.find({}).sort({ order: 1, createdAt: 1 }).lean());
@@ -131,6 +153,8 @@ export type DashboardStats = {
   servicesTotal: number;
   faqsPublished: number;
   faqsTotal: number;
+  resultsPublished: number;
+  resultsTotal: number;
 };
 
 export async function getDashboardStats(): Promise<DashboardStats> {
@@ -147,6 +171,8 @@ export async function getDashboardStats(): Promise<DashboardStats> {
     servicesTotal,
     faqsPublished,
     faqsTotal,
+    resultsPublished,
+    resultsTotal,
   ] = await Promise.all([
     Contact.countDocuments({}),
     Contact.countDocuments({ status: "new" }),
@@ -158,6 +184,8 @@ export async function getDashboardStats(): Promise<DashboardStats> {
     Service.countDocuments({}),
     Faq.countDocuments({ published: true }),
     Faq.countDocuments({}),
+    WoundCase.countDocuments({ published: true }),
+    WoundCase.countDocuments({}),
   ]);
 
   return {
@@ -171,5 +199,7 @@ export async function getDashboardStats(): Promise<DashboardStats> {
     servicesTotal,
     faqsPublished,
     faqsTotal,
+    resultsPublished,
+    resultsTotal,
   };
 }

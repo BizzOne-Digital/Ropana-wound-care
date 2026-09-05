@@ -35,10 +35,15 @@ export function Section({
   );
 }
 
-/** Small uppercase label above a section heading. Rationed site-wide. */
+/**
+ * Small uppercase label above a section heading. Rationed site-wide.
+ * The rule beside it is the section accent: the three logo colours
+ * (navy -> teal -> sage) in the order they read in the mark.
+ */
 export function Eyebrow({ children }: { children: ReactNode }) {
   return (
-    <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand">
+    <p className="mb-4 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand">
+      <span className="brand-rule shrink-0" aria-hidden />
       {children}
     </p>
   );

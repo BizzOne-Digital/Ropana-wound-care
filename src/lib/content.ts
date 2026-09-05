@@ -3,6 +3,7 @@ import { cache } from "react";
 import { dbConnect, serialize } from "@/lib/db";
 import { Service } from "@/models/Service";
 import { Testimonial } from "@/models/Testimonial";
+import { WoundCase } from "@/models/WoundCase";
 import { Faq } from "@/models/Faq";
 import { Setting, SETTING_KEYS } from "@/models/Setting";
 import { resolveImageSrc } from "@/lib/uploads";
@@ -27,6 +28,16 @@ export type TestimonialDTO = {
   rating: number | null;
   location: string;
   createdAt: string;
+};
+
+export type WoundCaseDTO = {
+  _id: string;
+  title: string;
+  summary: string;
+  timeframe: string;
+  beforeImage: string;
+  afterImage: string;
+  sensitive: boolean;
 };
 
 export type FaqDTO = {
@@ -102,6 +113,30 @@ export async function getPublishedTestimonials(
     return serialize<TestimonialDTO[]>(await query.lean());
   } catch (error) {
     console.error("[content.getPublishedTestimonials]", error);
+    return null;
+  }
+}
+
+/**
+ * Published before / after results.
+ *
+ * `consent: true` is required as well as `published: true`. The API already
+ * refuses to publish without consent, so this is a second gate: if a record
+ * ever loses its consent flag by any route, it stops being served here.
+ */
+export async function getPublishedWoundCases(
+  limit?: number
+): Promise<WoundCaseDTO[] | null> {
+  try {
+    await dbConnect();
+    const query = WoundCase.find({ published: true, consent: true }).sort({
+      order: 1,
+      createdAt: -1,
+    });
+    if (limit) query.limit(limit);
+    return serialize<WoundCaseDTO[]>(await query.lean());
+  } catch (error) {
+    console.error("[content.getPublishedWoundCases]", error);
     return null;
   }
 }

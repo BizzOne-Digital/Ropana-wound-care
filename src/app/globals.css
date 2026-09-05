@@ -5,82 +5,143 @@
 
    THE ONLY PLACE COLOURS ARE DEFINED.
 
-   The brand palette below is a placeholder derived from the brief's
-   "calm, clinical, premium" direction. When the client's logo is supplied,
-   sample its dominant colours and replace ONLY the --brand-* values in the
-   two blocks below. Nothing else in the codebase hardcodes a colour, so the
-   whole site (and the admin dashboard) re-skins from this file alone.
+   The palette is the client's logo palette:
+
+     Dark Navy Blue     #1A3B66   the 'R' monogram and "ROPANA" wordmark
+     Dusty Blue / Teal  #6897A1   the hand icon and cross symbol
+     Muted Sage Green   #9DB48C   the leaf element
+
+   Those three values are stored verbatim as --logo-*.
+
+   --brand / --accent / --leaf are the same three colours prepared for text.
+   The navy already clears WCAG AA on white (11.28:1) so --brand IS the logo
+   navy, untouched. The teal and sage are too light to sit on white as text,
+   so each is darkened along its OWN hue and saturation until it clears AA -
+   the hue is never shifted, so they still read as the logo colours. The
+   originals remain available as --logo-teal / --logo-sage for fills.
+
+   Neutrals are greys built on the navy's hue (white, off-white, soft grey,
+   charcoal) so they support the palette instead of competing with it.
+   No colour outside this system appears anywhere in the codebase.
+
+   Every foreground/background pair used by the UI was verified at >= 4.5:1
+   (>= 3:1 for control borders) in both themes.
 
    Shape lock:  controls 10px  ·  cards 14px  ·  badges pill
-   Accent lock: exactly one accent (--brand), used identically site-wide.
+   Accent lock: --brand carries every primary action; --accent and --leaf are
+   supporting accents only (icons, section accents, soft washes).
    ========================================================================== */
 
 :root {
   color-scheme: light;
 
-  /* Brand - replace these from the logo */
-  --brand: #14615c;
-  --brand-hover: #0f4b47;
-  --brand-active: #0b3a37;
-  --brand-soft: #e6f1f0;
-  --brand-soft-strong: #cfe4e2;
+  /* Raw logo colours - exact client values. Decorative fills only. */
+  --logo-navy: #1a3b66;
+  --logo-teal: #6897a1;
+  --logo-sage: #9db48c;
+
+  /* Primary - logo navy */
+  --brand: #1a3b66;
+  --brand-hover: #163358;
+  --brand-active: #132a49;
+  --brand-soft: #eff1f4;
+  --brand-soft-strong: #d6dce3;
   --brand-fg: #ffffff;
 
-  /* Neutrals */
+  /* Secondary - logo dusty blue / teal */
+  --accent: #4c727a;
+  --accent-hover: #416269;
+  --accent-soft: #f3f7f7;
+  --accent-soft-strong: #e1eaec;
+  --accent-fg: #ffffff;
+
+  /* Tertiary - logo muted sage green */
+  --leaf: #5b724b;
+  --leaf-hover: #4e6241;
+  --leaf-soft: #f5f8f4;
+  --leaf-soft-strong: #e7ede3;
+  --leaf-fg: #ffffff;
+
+  /* Neutrals - hue-matched to the navy, no competing tint */
   --surface: #ffffff;
-  --surface-2: #f6f8f8;
-  --surface-3: #eef2f2;
-  --ink-strong: #12201f;
-  --ink-body: #4b5b5a;
-  --ink-muted: #6e807f;
-  --line: #e0e7e6;
-  --line-strong: #c7d3d2;
+  --surface-2: #f7f8fa;
+  --surface-3: #edf0f5;
+  --ink-strong: #122640;
+  --ink-body: #425267;
+  --ink-muted: #5b6d83;
+  --line: #e1e6ed;
+  --line-strong: #8595aa;
 
-  /* Inverted colour block (used once per page, for the closing CTA) */
-  --band-bg: #10302e;
-  --band-text: #f0f6f5;
-  --band-muted: #a9c4c1;
-  --band-line: rgb(255 255 255 / 0.14);
+  /* Inverted colour block (closing CTA) */
+  --band-bg: #16345a;
+  --band-text: #f4f5f7;
+  --band-muted: #b1bccb;
+  --band-line: rgb(255 255 255 / 0.16);
 
-  /* Feedback */
-  --danger: #a4302c;
-  --danger-soft: #fceceb;
-  --success: #1c6b4a;
-  --success-soft: #e7f4ee;
-  --warning: #8a5a17;
-  --warning-soft: #fbf1e2;
+  --danger: #a3322c;
+  --danger-soft: #fbedec;
+  --success: #1e6b4c;
+  --success-soft: #e8f4ee;
+  --warning: #87571a;
+  --warning-soft: #fbf2e3;
 
   --focus: var(--brand);
 }
 
+/* Dark theme. Navy cannot carry an accent on a dark ground, so --brand
+   becomes the logo teal (used at its exact value) and --accent the logo
+   sage. Both stay logo colours - no new hue is introduced. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
 
-    --brand: #4fb5ab;
-    --brand-hover: #67c6bc;
-    --brand-active: #7ed3ca;
-    --brand-soft: #122b2a;
-    --brand-soft-strong: #173937;
-    --brand-fg: #062220;
+    /* Logo colours for a dark ground. Teal and sage are the exact client
+       values; only the navy is lifted so it stays visible. */
+    --logo-navy: #5a8fd5;
+    --logo-teal: #6897a1;
+    --logo-sage: #9db48c;
 
-    --surface: #0e1615;
-    --surface-2: #131e1d;
-    --surface-3: #182423;
-    --ink-strong: #eaf1f0;
-    --ink-body: #b2c2c0;
-    --ink-muted: #8a9c9a;
-    --line: #24312f;
-    --line-strong: #354644;
+    /* Primary - logo teal (navy is unusable on a dark ground) */
+    --brand: #6897a1;
+    --brand-hover: #80a8b0;
+    --brand-active: #95b6bd;
+    --brand-soft: #162629;
+    --brand-soft-strong: #1b2c2f;
+    --brand-fg: #08111c;
 
-    --band-bg: #081d1c;
-    --band-text: #eef5f4;
-    --band-muted: #9db6b3;
-    --band-line: rgb(255 255 255 / 0.12);
+    /* Secondary - logo muted sage green */
+    --accent: #9db48c;
+    --accent-hover: #adc09e;
+    --accent-soft: #1c2417;
+    --accent-soft-strong: #242c1e;
+    --accent-fg: #08111c;
 
-    --danger: #f08b86;
+    /* Tertiary - tracks the sage accent */
+    --leaf: #9db48c;
+    --leaf-hover: #adc09e;
+    --leaf-soft: #1c2417;
+    --leaf-soft-strong: #242c1e;
+    --leaf-fg: #08111c;
+
+    /* Neutrals - hue-matched to the navy, no competing tint */
+    --surface: #0f151c;
+    --surface-2: #151c26;
+    --surface-3: #1d2632;
+    --ink-strong: #e8ecf3;
+    --ink-body: #bcc5d2;
+    --ink-muted: #8f9cae;
+    --line: #2b3646;
+    --line-strong: #58697e;
+
+    /* Inverted colour block (closing CTA) */
+    --band-bg: #090e16;
+    --band-text: #f1f3f6;
+    --band-muted: #a8b5c5;
+    --band-line: rgb(255 255 255 / 0.16);
+
+    --danger: #f09189;
     --danger-soft: #2a1614;
-    --success: #6cc79b;
+    --success: #6fc79c;
     --success-soft: #10241b;
     --warning: #d8a95e;
     --warning-soft: #241c0f;
@@ -89,27 +150,54 @@
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --brand: #4fb5ab;
-  --brand-hover: #67c6bc;
-  --brand-active: #7ed3ca;
-  --brand-soft: #122b2a;
-  --brand-soft-strong: #173937;
-  --brand-fg: #062220;
-  --surface: #0e1615;
-  --surface-2: #131e1d;
-  --surface-3: #182423;
-  --ink-strong: #eaf1f0;
-  --ink-body: #b2c2c0;
-  --ink-muted: #8a9c9a;
-  --line: #24312f;
-  --line-strong: #354644;
-  --band-bg: #081d1c;
-  --band-text: #eef5f4;
-  --band-muted: #9db6b3;
-  --band-line: rgb(255 255 255 / 0.12);
-  --danger: #f08b86;
+
+  /* Logo colours for a dark ground. Teal and sage are the exact client
+       values; only the navy is lifted so it stays visible. */
+  --logo-navy: #5a8fd5;
+  --logo-teal: #6897a1;
+  --logo-sage: #9db48c;
+
+  /* Primary - logo teal (navy is unusable on a dark ground) */
+  --brand: #6897a1;
+  --brand-hover: #80a8b0;
+  --brand-active: #95b6bd;
+  --brand-soft: #162629;
+  --brand-soft-strong: #1b2c2f;
+  --brand-fg: #08111c;
+
+  /* Secondary - logo muted sage green */
+  --accent: #9db48c;
+  --accent-hover: #adc09e;
+  --accent-soft: #1c2417;
+  --accent-soft-strong: #242c1e;
+  --accent-fg: #08111c;
+
+  /* Tertiary - tracks the sage accent */
+  --leaf: #9db48c;
+  --leaf-hover: #adc09e;
+  --leaf-soft: #1c2417;
+  --leaf-soft-strong: #242c1e;
+  --leaf-fg: #08111c;
+
+  /* Neutrals - hue-matched to the navy, no competing tint */
+  --surface: #0f151c;
+  --surface-2: #151c26;
+  --surface-3: #1d2632;
+  --ink-strong: #e8ecf3;
+  --ink-body: #bcc5d2;
+  --ink-muted: #8f9cae;
+  --line: #2b3646;
+  --line-strong: #58697e;
+
+  /* Inverted colour block (closing CTA) */
+  --band-bg: #090e16;
+  --band-text: #f1f3f6;
+  --band-muted: #a8b5c5;
+  --band-line: rgb(255 255 255 / 0.16);
+
+  --danger: #f09189;
   --danger-soft: #2a1614;
-  --success: #6cc79b;
+  --success: #6fc79c;
   --success-soft: #10241b;
   --warning: #d8a95e;
   --warning-soft: #241c0f;
@@ -122,6 +210,22 @@
   --color-brand-soft: var(--brand-soft);
   --color-brand-soft-strong: var(--brand-soft-strong);
   --color-brand-fg: var(--brand-fg);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-soft-strong: var(--accent-soft-strong);
+  --color-accent-fg: var(--accent-fg);
+
+  --color-leaf: var(--leaf);
+  --color-leaf-hover: var(--leaf-hover);
+  --color-leaf-soft: var(--leaf-soft);
+  --color-leaf-soft-strong: var(--leaf-soft-strong);
+  --color-leaf-fg: var(--leaf-fg);
+
+  --color-logo-navy: var(--logo-navy);
+  --color-logo-teal: var(--logo-teal);
+  --color-logo-sage: var(--logo-sage);
 
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
@@ -146,6 +250,8 @@
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", sans-serif;
+  --font-serif: var(--font-brand-serif), "Iowan Old Style", Georgia,
+    ui-serif, serif;
 
   --radius-control: 10px;
   --radius-card: 14px;
@@ -229,6 +335,21 @@
   .skip-link:focus {
     left: 1rem;
     top: 1rem;
+  }
+}
+
+@layer utilities {
+  /* Section accent: the three logo colours as a hairline rule. */
+  .brand-rule {
+    height: 3px;
+    width: 56px;
+    border-radius: 999px;
+    background: linear-gradient(
+      90deg,
+      var(--logo-navy) 0%,
+      var(--logo-teal) 55%,
+      var(--logo-sage) 100%
+    );
   }
 }
 

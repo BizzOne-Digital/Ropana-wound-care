@@ -77,7 +77,7 @@ export default async function AdminOverviewPage() {
         >
           Live on the website
         </h2>
-        <div className="grid gap-4 sm:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <StatCard
             label="Published services"
             value={stats.servicesPublished}
@@ -92,6 +92,11 @@ export default async function AdminOverviewPage() {
             label="Published FAQs"
             value={stats.faqsPublished}
             detail={`${stats.faqsTotal} created`}
+          />
+          <StatCard
+            label="Published results"
+            value={stats.resultsPublished}
+            detail={`${stats.resultsTotal} created`}
           />
         </div>
       </section>
