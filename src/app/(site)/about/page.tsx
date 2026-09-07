@@ -3,8 +3,9 @@ import Image from "next/image";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Icon } from "@/components/ui/Icon";
-import { CtaBand } from "@/components/site/CtaBand";
 import { ServiceArea } from "@/components/site/ServiceArea";
+import { Mission } from "@/components/site/Mission";
+import { ContactCallout } from "@/components/site/ContactCallout";
 import { getSiteImages } from "@/lib/content";
 import { differentiators, site } from "@/lib/site";
 
@@ -25,6 +26,8 @@ export default async function AboutPage() {
         image="/images/feet1.jpg"
         intro={`${site.name} brings advanced wound care to patients across the ${site.serviceAreaLong}, through mobile visits and telehealth consultations.`}
       />
+
+      <Mission />
 
       <Section>
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
@@ -98,10 +101,7 @@ export default async function AboutPage() {
       </Section>
 
       <ServiceArea />
-      <CtaBand
-        heading="Talk to us about your wound care"
-        body="Request a mobile visit or a telehealth consultation and we will contact you to confirm availability."
-      />
+      <ContactCallout tone="default" />
     </>
   );
 }

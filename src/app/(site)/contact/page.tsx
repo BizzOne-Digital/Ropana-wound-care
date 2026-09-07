@@ -25,6 +25,10 @@ export default function ContactPage() {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <h2 className="text-xl">{site.name}</h2>
+            <p className="mt-2 text-[15px] font-medium text-strong">
+              {site.clinician}
+            </p>
+            <p className="mt-1 text-[14px] text-brand">{site.clinicianRole}</p>
 
             <dl className="mt-6 flex flex-col gap-5">
               <div className="flex gap-4">
@@ -115,7 +119,7 @@ export default function ContactPage() {
                 that suits you.
               </p>
               <ButtonLink href="/booking" size="sm" className="mt-4">
-                Book a Visit
+                Request an Appointment Today
               </ButtonLink>
             </div>
 

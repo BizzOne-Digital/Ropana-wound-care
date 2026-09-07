@@ -108,3 +108,43 @@ export const MEDICAL_DISCLAIMER =
 
 export const PHI_NOTICE =
   "Please do not include sensitive medical details, diagnoses or health record information in this form. We will collect what we need securely once we contact you.";
+
+/** Mission statement supplied by the client. Do not reword without approval. */
+export const mission = {
+  heading: `About ${site.name}`,
+  paragraphs: [
+    `At ${site.name}, our mission is to promote healing, prevent complications, and improve quality of life through evidence-based wound management. We provide comprehensive evaluations, advanced treatment options, and personalized care plans for patients with both acute and chronic wounds.`,
+    "Whether you need in-person wound care or a virtual consultation, our goal is to deliver compassionate, convenient, and expert care.",
+  ],
+} as const;
+
+/**
+ * Conditions treated, grouped as supplied by the client. This is the fixed
+ * clinical scope of the practice, separate from the service listings that are
+ * managed from the admin dashboard.
+ */
+export const conditionGroups = [
+  {
+    title: "Chronic Wound Care",
+    icon: "bandaids",
+    conditions: [
+      "Diabetic Foot Ulcers",
+      "Venous Leg Ulcers",
+      "Arterial Ulcers",
+      "Pressure Injuries (Stages 1-4)",
+      "Neuropathic Ulcers",
+    ],
+  },
+  {
+    title: "Acute Wound Care",
+    icon: "clipboard",
+    conditions: [
+      "Surgical Wounds",
+      "Post-Operative Wounds",
+      "Skin Tears",
+      "Abrasions",
+      "Traumatic Wounds",
+      "Lacerations",
+    ],
+  },
+] as const;

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/site/PageHeader";
 import { ServicesSection } from "@/components/site/ServicesSection";
-import { CtaBand } from "@/components/site/CtaBand";
+import { ConditionsTreated } from "@/components/site/ConditionsTreated";
+import { ContactCallout } from "@/components/site/ContactCallout";
 import { getPublishedServices } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -21,7 +22,8 @@ export default async function ServicesPage() {
         intro="Assessment, treatment and follow-up delivered in your home or by secure video across the Dallas-Fort Worth area."
       />
       <ServicesSection services={services} />
-      <CtaBand />
+      <ConditionsTreated />
+      <ContactCallout tone="default" />
     </>
   );
 }
