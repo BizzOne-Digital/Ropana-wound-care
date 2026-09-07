@@ -18,7 +18,14 @@ export function Footer({
       <div className="container-page py-14 md:py-16">
         <div className="grid gap-10 md:grid-cols-12 md:gap-8">
           <div className="md:col-span-4">
-            <Logo logoUrl={logoUrl} />
+            <div className="flex items-center gap-3">
+              <Logo logoUrl={logoUrl} />
+              {logoUrl ? (
+                <span className="whitespace-nowrap font-serif text-[15px] font-semibold tracking-[0.08em] text-brand">
+                  Ropana Wound Care
+                </span>
+              ) : null}
+            </div>
             <p className="mt-4 max-w-[38ch] text-sm leading-relaxed text-body">
               Mobile wound care and telehealth consultations across the{" "}
               {site.serviceAreaLong}, led by {site.clinician}.

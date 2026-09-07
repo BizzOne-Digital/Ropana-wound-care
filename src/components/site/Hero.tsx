@@ -1,5 +1,4 @@
 import { ButtonLink } from "@/components/ui/Button";
-import { site } from "@/lib/site";
 
 export function Hero() {
   return (
@@ -19,10 +18,6 @@ export function Hero() {
       <div className="container-page relative">
         <div className="max-w-2xl">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand">
-              {site.name}
-            </p>
-
             <h1 className="mt-5 text-[2.4rem] leading-[1.06] tracking-tight text-white sm:text-5xl lg:text-[3.5rem]">
               Expert wound care, delivered to you.
             </h1>

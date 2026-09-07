@@ -25,7 +25,14 @@ export function Header({ logoUrl }: { logoUrl?: string }) {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-surface/92 backdrop-blur-md">
       <div className="container-page flex h-[72px] items-center justify-between gap-6">
-        <Logo logoUrl={logoUrl} />
+        <div className="flex items-center gap-3">
+          <Logo logoUrl={logoUrl} size="lg" />
+          {logoUrl ? (
+            <span className="whitespace-nowrap font-serif text-[15px] font-semibold tracking-[0.08em] text-brand">
+              Ropana Wound Care
+            </span>
+          ) : null}
+        </div>
 
         <nav aria-label="Primary" className="hidden lg:block">
           <ul className="flex items-center gap-7">
