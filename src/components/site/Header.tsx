@@ -26,9 +26,9 @@ export function Header({ logoUrl }: { logoUrl?: string }) {
     <header className="sticky top-0 z-50 border-b border-line bg-surface/92 backdrop-blur-md">
       <div className="container-page flex h-[72px] items-center justify-between gap-6">
         <div className="flex items-center gap-3">
-          <Logo logoUrl={logoUrl} size="lg" />
+          <Logo logoUrl={logoUrl} size="xl" />
           {logoUrl ? (
-            <span className="whitespace-nowrap font-serif text-[15px] font-semibold tracking-[0.08em] text-brand">
+            <span className="whitespace-nowrap font-serif text-[24px] font-semibold tracking-[0.11em] text-brand">
               Ropana Wound Care
             </span>
           ) : null}

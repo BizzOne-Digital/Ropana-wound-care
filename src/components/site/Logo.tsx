@@ -22,10 +22,10 @@ export function Logo({
 }: {
   logoUrl?: string;
   onBand?: boolean;
-  size?: "md" | "lg";
+  size?: "md" | "lg" | "xl";
 }) {
   const label = site.name;
-  const markPx = size === "lg" ? 48 : 38;
+  const markPx = size === "xl" ? 64 : size === "lg" ? 48 : 38;
 
   return (
     <Link
@@ -40,7 +40,13 @@ export function Logo({
           width={168}
           height={40}
           priority
-          className={size === "lg" ? "h-12 w-auto object-contain" : "h-10 w-auto object-contain"}
+          className={
+            size === "xl"
+              ? "h-16 w-auto object-contain"
+              : size === "lg"
+                ? "h-12 w-auto object-contain"
+                : "h-10 w-auto object-contain"
+          }
         />
       ) : (
         <>
@@ -49,9 +55,11 @@ export function Logo({
             <span
               className={cx(
                 "font-serif font-semibold uppercase",
-                size === "lg"
-                  ? "text-[24px] tracking-[0.11em]"
-                  : "text-[19px] tracking-[0.1em]",
+                size === "xl"
+                  ? "text-[28px] tracking-[0.12em]"
+                  : size === "lg"
+                    ? "text-[24px] tracking-[0.11em]"
+                    : "text-[19px] tracking-[0.1em]",
                 onBand ? "text-band-text" : "text-brand"
               )}
             >
@@ -60,9 +68,11 @@ export function Logo({
             <span
               className={cx(
                 "mt-1 font-medium uppercase",
-                size === "lg"
-                  ? "text-[11px] tracking-[0.3em]"
-                  : "text-[9px] tracking-[0.28em]",
+                size === "xl"
+                  ? "text-[13px] tracking-[0.32em]"
+                  : size === "lg"
+                    ? "text-[11px] tracking-[0.3em]"
+                    : "text-[9px] tracking-[0.28em]",
                 onBand ? "text-band-muted" : "text-accent"
               )}
             >

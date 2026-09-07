@@ -19,9 +19,9 @@ export function Footer({
         <div className="grid gap-10 md:grid-cols-12 md:gap-8">
           <div className="md:col-span-4">
             <div className="flex items-center gap-3">
-              <Logo logoUrl={logoUrl} />
+              <Logo logoUrl={logoUrl} size="lg" />
               {logoUrl ? (
-                <span className="whitespace-nowrap font-serif text-[15px] font-semibold tracking-[0.08em] text-brand">
+                <span className="whitespace-nowrap font-serif text-[24px] font-semibold tracking-[0.11em] text-brand">
                   Ropana Wound Care
                 </span>
               ) : null}
