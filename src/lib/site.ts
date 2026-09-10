@@ -147,4 +147,15 @@ export const conditionGroups = [
       "Lacerations",
     ],
   },
+  {
+    title: "Podiatry Services Offered",
+    icon: "clipboard",
+    conditions: [
+      "At - Risk Foot Evaluation",
+      "Diabetic Foot & Nail Care",
+      "Corn/Callus Removal",
+      "Wart Removal",
+      "Pain Management Injections",
+    ],
+  },
 ] as const;
