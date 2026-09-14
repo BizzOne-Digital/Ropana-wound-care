@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ContentImage } from "@/components/ui/ContentImage";
 import { ButtonLink } from "@/components/ui/Button";
 import { Eyebrow, Section, SectionHeading } from "@/components/ui/Section";
 import { site } from "@/lib/site";
@@ -36,16 +36,13 @@ export function AboutPreview({ imageUrl }: { imageUrl: string }) {
         </div>
 
         <div className="lg:col-span-6">
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-card border border-line lg:ml-auto lg:mr-0">
-            {/* TODO(client): replace with a professional portrait via Admin -> Media. */}
-            <Image
-              src={imageUrl}
-              alt={`Portrait of ${site.clinician}`}
-              fill
-              sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover"
-            />
-          </div>
+          {/* TODO(client): replace with a professional portrait via Admin -> Media. */}
+          <ContentImage
+            src={imageUrl}
+            alt={`Portrait of ${site.clinician}`}
+            sizes="(max-width: 1024px) 100vw, 40vw"
+            className="mx-auto aspect-[4/5] w-full max-w-md rounded-card border border-line lg:ml-auto lg:mr-0"
+          />
         </div>
       </div>
     </Section>

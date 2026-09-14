@@ -157,7 +157,7 @@ export function LocalImageField({
             fill
             sizes="384px"
             unoptimized={isPlaceholder}
-            className="object-cover"
+            className="object-contain object-center"
           />
         </div>
       ) : (

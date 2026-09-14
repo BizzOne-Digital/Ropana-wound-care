@@ -6,7 +6,7 @@ import { PencilSimple, Plus, Trash } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/components/ui/Button";
 import { CheckboxField, TextAreaField, TextField } from "@/components/ui/Field";
 import { EmptyState, Spinner } from "@/components/ui/States";
-import { SafeImage } from "@/components/ui/SafeImage";
+import { ContentImage } from "@/components/ui/ContentImage";
 import { ConfirmDialog } from "@/components/admin/Confirm";
 import { LocalImageField } from "@/components/admin/LocalImageField";
 import { Panel, StatusBadge } from "@/components/admin/primitives";
@@ -389,15 +389,12 @@ export function WoundCasesManager({ cases }: { cases: AdminWoundCase[] }) {
                     { src: item.afterImage, label: "After" },
                   ].map(({ src, label }) => (
                     <div key={label} className="w-16">
-                      <div className="relative aspect-square overflow-hidden rounded-control border border-line bg-surface-3">
-                        <SafeImage
-                          src={src}
-                          alt={`${item.title}, ${label.toLowerCase()}`}
-                          fill
-                          sizes="64px"
-                          className="object-cover"
-                        />
-                      </div>
+                      <ContentImage
+                        src={src}
+                        alt={`${item.title}, ${label.toLowerCase()}`}
+                        sizes="64px"
+                        className="aspect-square rounded-control border border-line"
+                      />
                       <span className="mt-1 block text-center text-[11px] text-muted">
                         {label}
                       </span>

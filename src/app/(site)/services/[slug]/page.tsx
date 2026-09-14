@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, Check } from "@phosphor-icons/react/dist/ssr";
 import { ButtonLink } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
-import { SafeImage } from "@/components/ui/SafeImage";
+import { ContentImage } from "@/components/ui/ContentImage";
 import { CtaBand } from "@/components/site/CtaBand";
 import { ServiceCard } from "@/components/site/ServiceCard";
 import {
@@ -92,17 +92,14 @@ export default async function ServiceDetailPage({ params }: Props) {
             </div>
 
             <div className="lg:col-span-5">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card border border-line">
-                <SafeImage
-                  src={service.image}
-                  designFallback={PLACEHOLDER.service}
-                  alt=""
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover"
-                />
-              </div>
+              <ContentImage
+                src={service.image}
+                designFallback={PLACEHOLDER.service}
+                alt=""
+                priority
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="aspect-[4/3] w-full rounded-card border border-line"
+              />
             </div>
           </div>
         </div>

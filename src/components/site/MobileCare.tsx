@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ContentImage } from "@/components/ui/ContentImage";
 import { ButtonLink } from "@/components/ui/Button";
 import { Eyebrow, Section, SectionHeading } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
@@ -27,16 +27,13 @@ export function MobileCare({ imageUrl }: { imageUrl: string }) {
     <Section tone="tinted" labelledBy="mobile-care-heading">
       <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card border border-line">
-            {/* TODO(client): replace with a real mobile visit photograph. */}
-            <Image
-              src={imageUrl}
-              alt="A clinician arriving at a patient's home for a scheduled wound care visit"
-              fill
-              sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover"
-            />
-          </div>
+          {/* TODO(client): replace with a real mobile visit photograph. */}
+          <ContentImage
+            src={imageUrl}
+            alt="A clinician arriving at a patient's home for a scheduled wound care visit"
+            sizes="(max-width: 1024px) 100vw, 40vw"
+            className="aspect-[4/3] w-full rounded-card border border-line"
+          />
         </div>
 
         <div className="lg:col-span-7">

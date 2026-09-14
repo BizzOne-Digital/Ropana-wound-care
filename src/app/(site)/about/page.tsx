@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { ContentImage } from "@/components/ui/ContentImage";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Icon } from "@/components/ui/Icon";
@@ -32,17 +32,14 @@ export default async function AboutPage() {
       <Section>
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-card border border-line">
-              {/* TODO(client): replace with a professional portrait via Admin -> Media. */}
-              <Image
-                src={images.aboutImage}
-                alt={`Portrait of ${site.clinician}`}
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover"
-              />
-            </div>
+            {/* TODO(client): replace with a professional portrait via Admin -> Media. */}
+            <ContentImage
+              src={images.aboutImage}
+              alt={`Portrait of ${site.clinician}`}
+              priority
+              sizes="(max-width: 1024px) 100vw, 40vw"
+              className="aspect-[4/5] w-full rounded-card border border-line"
+            />
           </div>
 
           <div className="lg:col-span-7">

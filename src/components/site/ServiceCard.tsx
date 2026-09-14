@@ -1,21 +1,18 @@
 import Link from "next/link";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
-import { SafeImage } from "@/components/ui/SafeImage";
+import { ContentImage } from "@/components/ui/ContentImage";
 import { PLACEHOLDER, type ServiceDTO } from "@/lib/content";
 
 export function ServiceCard({ service }: { service: ServiceDTO }) {
   return (
     <article className="group flex flex-col overflow-hidden rounded-card border border-line bg-surface transition-colors duration-200 hover:border-line-strong">
-      <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface-3">
-        <SafeImage
-          src={service.image}
-          designFallback={PLACEHOLDER.service}
-          alt=""
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"
-          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-        />
-      </div>
+      <ContentImage
+        src={service.image}
+        designFallback={PLACEHOLDER.service}
+        alt=""
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"
+        className="aspect-[16/10] w-full"
+      />
 
       <div className="flex flex-1 flex-col p-6">
         <h3 className="text-lg leading-snug">{service.title}</h3>

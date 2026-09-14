@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Eye } from "@phosphor-icons/react/dist/ssr";
-import { SafeImage } from "@/components/ui/SafeImage";
+import { ContentImage } from "@/components/ui/ContentImage";
 import { cx } from "@/lib/format";
 import type { WoundCaseDTO } from "@/lib/content";
 
@@ -19,19 +19,17 @@ function Frame({
 }) {
   return (
     <figure className="relative m-0">
-      <div className="relative aspect-square overflow-hidden rounded-control bg-surface-3">
-        <SafeImage
-          src={src}
-          alt={alt}
-          fill
-          sizes="(min-width: 1024px) 260px, (min-width: 640px) 40vw, 44vw"
-          className={cx(
-            "object-cover transition-[filter,transform] duration-500",
-            // scale-105 hides the soft edge blur leaves at the frame border
-            blurred && "scale-105 blur-xl"
-          )}
-        />
-      </div>
+      <ContentImage
+        src={src}
+        alt={alt}
+        sizes="(min-width: 1024px) 260px, (min-width: 640px) 40vw, 44vw"
+        className="aspect-square rounded-control"
+        imageClassName={cx(
+          "transition-[filter,transform] duration-500",
+          // scale-105 hides the soft edge blur leaves at the frame border
+          blurred && "scale-105 blur-xl"
+        )}
+      />
       <figcaption className="mt-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted">
         {label}
       </figcaption>

@@ -5,7 +5,7 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { PencilSimple, Trash } from "@phosphor-icons/react/dist/ssr";
 import { ButtonLink } from "@/components/ui/Button";
-import { SafeImage } from "@/components/ui/SafeImage";
+import { ContentImage } from "@/components/ui/ContentImage";
 import { EmptyState } from "@/components/ui/States";
 import { ConfirmDialog } from "@/components/admin/Confirm";
 import { StatusBadge } from "@/components/admin/primitives";
@@ -77,21 +77,18 @@ export function ServicesList({ services }: { services: AdminService[] }) {
             key={service._id}
             className="flex flex-col gap-4 rounded-card border border-line bg-surface p-4 sm:flex-row sm:items-center"
           >
-            <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-control bg-surface-3 sm:w-32">
-              {service.image ? (
-                <SafeImage
-                  src={service.image}
-                  alt=""
-                  fill
-                  sizes="128px"
-                  className="object-cover"
-                />
-              ) : (
-                <span className="flex h-full items-center justify-center text-[12px] text-muted">
-                  No image
-                </span>
-              )}
-            </div>
+            {service.image ? (
+              <ContentImage
+                src={service.image}
+                alt=""
+                sizes="128px"
+                className="aspect-[16/10] w-full shrink-0 rounded-control sm:w-32"
+              />
+            ) : (
+              <div className="flex aspect-[16/10] w-full shrink-0 items-center justify-center rounded-control bg-surface-3 text-[12px] text-muted sm:w-32">
+                No image
+              </div>
+            )}
 
             <div className="min-w-0 flex-1">
               <div className="flex flex-wrap items-center gap-3">
