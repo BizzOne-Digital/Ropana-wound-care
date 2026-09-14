@@ -147,6 +147,7 @@ export type DashboardStats = {
   contactsNew: number;
   bookingsTotal: number;
   bookingsPending: number;
+  bookingsConfirmed: number;
   testimonialsPublished: number;
   testimonialsTotal: number;
   servicesPublished: number;
@@ -165,6 +166,7 @@ export async function getDashboardStats(): Promise<DashboardStats> {
     contactsNew,
     bookingsTotal,
     bookingsPending,
+    bookingsConfirmed,
     testimonialsPublished,
     testimonialsTotal,
     servicesPublished,
@@ -178,6 +180,7 @@ export async function getDashboardStats(): Promise<DashboardStats> {
     Contact.countDocuments({ status: "new" }),
     Booking.countDocuments({}),
     Booking.countDocuments({ status: "pending" }),
+    Booking.countDocuments({ status: "confirmed" }),
     Testimonial.countDocuments({ published: true }),
     Testimonial.countDocuments({}),
     Service.countDocuments({ published: true }),
@@ -193,6 +196,7 @@ export async function getDashboardStats(): Promise<DashboardStats> {
     contactsNew,
     bookingsTotal,
     bookingsPending,
+    bookingsConfirmed,
     testimonialsPublished,
     testimonialsTotal,
     servicesPublished,

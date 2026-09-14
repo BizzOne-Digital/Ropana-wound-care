@@ -2,8 +2,9 @@
 
 import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { MagnifyingGlass, Trash } from "@phosphor-icons/react/dist/ssr";
+import { Eye, MagnifyingGlass, Trash } from "@phosphor-icons/react/dist/ssr";
 import { ConfirmDialog } from "@/components/admin/Confirm";
+import { BookingDetailDialog } from "@/components/admin/BookingDetail";
 import { useToast } from "@/components/admin/Toast";
 import { StatusBadge } from "@/components/admin/primitives";
 import { EmptyState } from "@/components/ui/States";
@@ -20,6 +21,7 @@ export function BookingsManager({ bookings }: { bookings: AdminBooking[] }) {
   const [query, setQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [busyId, setBusyId] = useState<string | null>(null);
+  const [viewing, setViewing] = useState<AdminBooking | null>(null);
   const [pendingDelete, setPendingDelete] = useState<AdminBooking | null>(null);
   const [deleting, setDeleting] = useState(false);
 
@@ -211,6 +213,15 @@ export function BookingsManager({ bookings }: { bookings: AdminBooking[] }) {
 
                   <button
                     type="button"
+                    onClick={() => setViewing(booking)}
+                    aria-label={`View request from ${booking.name}`}
+                    className="inline-flex size-10 items-center justify-center rounded-control border border-line-strong text-muted transition-colors hover:border-brand hover:text-brand"
+                  >
+                    <Eye size={16} aria-hidden />
+                  </button>
+
+                  <button
+                    type="button"
                     onClick={() => setPendingDelete(booking)}
                     aria-label={`Delete request from ${booking.name}`}
                     className="inline-flex size-10 items-center justify-center rounded-control border border-line-strong text-muted transition-colors hover:border-danger hover:text-danger"
@@ -223,6 +234,8 @@ export function BookingsManager({ bookings }: { bookings: AdminBooking[] }) {
           ))}
         </ul>
       )}
+
+      <BookingDetailDialog booking={viewing} onClose={() => setViewing(null)} />
 
       <ConfirmDialog
         open={pendingDelete !== null}

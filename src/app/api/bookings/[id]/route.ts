@@ -7,6 +7,24 @@ export const runtime = "nodejs";
 
 type Params = { params: Promise<{ id: string }> };
 
+/** Admin: read one booking request in full. */
+export async function GET(_request: Request, { params }: Params) {
+  const { response } = await requireAdmin();
+  if (response) return response;
+
+  const { id } = await params;
+  if (!objectId.safeParse(id).success) return fail("Invalid identifier.", 400);
+
+  try {
+    await dbConnect();
+    const doc = await Booking.findById(id).lean();
+    if (!doc) return fail("Booking request not found.", 404);
+    return ok(serialize(doc));
+  } catch (error) {
+    return serverError("bookings.read", error);
+  }
+}
+
 export async function PATCH(request: Request, { params }: Params) {
   const { response } = await requireAdmin();
   if (response) return response;

@@ -58,7 +58,7 @@ export default async function AdminOverviewPage() {
           <StatCard
             label="Pending booking requests"
             value={stats.bookingsPending}
-            detail={`${stats.bookingsTotal} requests in total`}
+            detail={`${stats.bookingsConfirmed} confirmed · ${stats.bookingsTotal} requests in total`}
             emphasis={stats.bookingsPending > 0}
           />
           <StatCard
