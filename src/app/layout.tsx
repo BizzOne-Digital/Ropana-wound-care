@@ -20,8 +20,8 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} | Ropana Wound Care`,
-    template: `%s | ${site.name}`,
+    default: "Ropana Wound Care",
+    template: "%s",
   },
   description:
     "Mobile wound care and telehealth consultations across the Dallas-Fort Worth area, led by a board-certified family nurse practitioner.",
