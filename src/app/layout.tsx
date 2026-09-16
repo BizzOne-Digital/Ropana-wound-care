@@ -38,14 +38,14 @@ export const metadata: Metadata = {
     siteName: site.name,
     locale: "en_US",
     url: site.url,
-    title: `${site.name} | Mobile Wound Care in the DFW Area`,
+    title: `${site.name} | Ropana Wound Care`,
     description:
       "Expert wound care delivered to you. Mobile visits and telehealth consultations across the Dallas-Fort Worth area.",
     images: [{ url: "/Logo/logo.png", width: 500, height: 500, alt: site.name }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} | Mobile Wound Care in the DFW Area`,
+    title: `${site.name} | Ropana Wound Care`,
     description:
       "Expert wound care delivered to you. Mobile visits and telehealth consultations across the Dallas-Fort Worth area.",
     images: ["/Logo/logo.png"],
