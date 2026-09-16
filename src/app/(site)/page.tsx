@@ -20,7 +20,7 @@ import {
 } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Mobile Wound Care in the DFW Area",
+  title: "Ropana Wound Care",
   description:
     "Ropana Wound Care provides mobile wound care visits and telehealth consultations across the Dallas-Fort Worth area, led by a board-certified family nurse practitioner.",
   alternates: { canonical: "/" },
