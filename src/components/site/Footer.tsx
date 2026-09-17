@@ -111,6 +111,14 @@ export function Footer({
                 </a>
               </li>
               <li className="text-body">Serving the {site.serviceAreaLong}</li>
+              <li>
+                <Link
+                  href="/pay"
+                  className="font-medium text-brand transition-colors hover:text-brand-hover"
+                >
+                  Make a payment
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

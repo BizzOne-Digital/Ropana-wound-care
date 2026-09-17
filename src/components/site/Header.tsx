@@ -62,13 +62,18 @@ export function Header({ logoUrl }: { logoUrl?: string }) {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
+          {/* Hidden below xl: with two buttons beside it the number wraps.
+              It stays reachable in the mobile menu and the footer. */}
           <a
             href={site.phoneHref}
-            className="inline-flex items-center gap-2 text-[15px] font-medium text-strong transition-colors hover:text-brand"
+            className="hidden items-center gap-2 whitespace-nowrap text-[15px] font-medium text-strong transition-colors hover:text-brand xl:inline-flex"
           >
             <Phone size={18} aria-hidden />
             {site.phoneDisplay}
           </a>
+          <ButtonLink href="/pay" size="sm" variant="secondary">
+            Pay a Bill
+          </ButtonLink>
           <ButtonLink href="/booking" size="sm">
             Book a Visit
           </ButtonLink>
@@ -118,6 +123,14 @@ export function Header({ logoUrl }: { logoUrl?: string }) {
           <div className="mt-6 flex flex-col gap-3">
             <ButtonLink href="/booking" size="lg" className="w-full">
               Book a Visit
+            </ButtonLink>
+            <ButtonLink
+              href="/pay"
+              size="lg"
+              variant="secondary"
+              className="w-full"
+            >
+              Pay a Bill
             </ButtonLink>
             <a
               href={site.phoneHref}

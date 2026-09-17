@@ -2,6 +2,7 @@ import "server-only";
 import { dbConnect, serialize } from "@/lib/db";
 import { Booking } from "@/models/Booking";
 import { Contact } from "@/models/Contact";
+import { Payment } from "@/models/Payment";
 import { Faq } from "@/models/Faq";
 import { Service } from "@/models/Service";
 import { Testimonial } from "@/models/Testimonial";
@@ -30,6 +31,16 @@ export type AdminBooking = {
   service: string;
   message: string;
   status: BookingStatus;
+  createdAt: string;
+};
+
+export type AdminPayment = {
+  _id: string;
+  stripeId: string;
+  amount: number;
+  currency: string;
+  email: string;
+  reference: string;
   createdAt: string;
 };
 
@@ -102,6 +113,13 @@ export async function listBookings(): Promise<AdminBooking[]> {
   await dbConnect();
   return serialize(
     await Booking.find({}).sort({ createdAt: -1 }).limit(300).lean()
+  );
+}
+
+export async function listPayments(): Promise<AdminPayment[]> {
+  await dbConnect();
+  return serialize(
+    await Payment.find({}).sort({ createdAt: -1 }).limit(300).lean()
   );
 }
 
